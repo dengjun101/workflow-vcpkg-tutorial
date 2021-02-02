@@ -32,7 +32,6 @@
 
 void process(WFHttpTask *server_task)
 {
-	static int loop = 0;
 	protocol::HttpRequest *req = server_task->get_req();
 	protocol::HttpResponse *resp = server_task->get_resp();
 	long long seq = server_task->get_task_seq();
@@ -63,7 +62,7 @@ void process(WFHttpTask *server_task)
 
 	resp->add_header_pair("Content-Type", "text/html");
 	resp->add_header_pair("Server", "Sogou WFHttpServer");
-	//if (seq == 9) /* no more than 10 requests on the same connection. */
+	if (seq == 9) /* no more than 10 requests on the same connection. */
 		resp->add_header_pair("Connection", "close");
 
 	/* print some log */
@@ -88,8 +87,8 @@ void process(WFHttpTask *server_task)
 	else
 		strcpy(addrstr, "Unknown");
 
-	fprintf(stderr, "Peer address: %s:%d, seq: %lld, loop:%d.\n",
-			addrstr, port, seq, ++loop);
+	fprintf(stderr, "Peer address: %s:%d, seq: %lld.\n",
+			addrstr, port, seq);
 }
 
 void sig_handler(int signo) { }
