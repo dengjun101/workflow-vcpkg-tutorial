@@ -15,6 +15,7 @@
 */
 
 #include <signal.h>
+#include "define.h"
 #include "echo_thrift.srpc.h"
 #include "workflow/WFFacilities.h"
 

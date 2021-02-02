@@ -15,6 +15,7 @@
 */
 
 #include <signal.h>
+#include "define.h"
 #include <workflow/WFTaskFactory.h>
 #include "echo_pb.srpc.h"
 #include "workflow/WFFacilities.h"

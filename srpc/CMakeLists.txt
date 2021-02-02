@@ -20,6 +20,7 @@ endif ()
 
 find_package(OpenSSL REQUIRED)
 
+
 set(protobuf_MODULE_COMPATIBLE ON CACHE BOOL "")
 if (WIN32)
 	find_package(Protobuf CONFIG REQUIRED)
@@ -27,20 +28,10 @@ else ()
 	find_package(Protobuf REQUIRED)
 endif ()
 
-find_package(Workflow REQUIRED CONFIG HINTS ../workflow)
+find_package(Workflow REQUIRED CONFIG)
+find_package(srpc CONFIG REQUIRED)
+find_package(ZLIB REQUIRED)
 
-#if (APPLE)
-#	if (WORKFLOW_INCLUDE_DIR)
-#		set (WORKFLOW_INCLUDE_DIR ${Workflow_DIR}/_include)
-#		set (WORKFLOW_LIB_DIR ${Workflow_DIR}/_lib)
-#	else ()
-#		find_package(Workflow REQUIRED)
-#	endif ()
-#else ()
-#	find_package(Workflow REQUIRED)
-#endif()
-
-find_package(srpc REQUIRED CONFIG HINTS ..)
 include_directories(
 	${OPENSSL_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
@@ -51,7 +42,7 @@ include_directories(
 
 if (WIN32)
 	link_directories(${SRPC_LIB_DIR} ${WORKFLOW_LIB_DIR} ${Protobuf_LIB_DIR})
-	set(SRPC_GEN_PROGRAM ${SRPC_BIN_DIR}/Debug/srpc_generator.exe)
+	set(SRPC_GEN_PROGRAM ${SRPC_BIN_DIR}/srpc_generator.exe)
 else ()
 	get_filename_component(Protobuf_LIB_DIR ${Protobuf_LIBRARY} DIRECTORY)
 	link_directories(${SRPC_LIB_DIR} ${WORKFLOW_LIB_DIR} ${Protobuf_LIB_DIR})
@@ -87,7 +78,7 @@ set(TUTORIAL_PB_LIST
 if (APPLE)
 	set(SRPC_LIB srpc workflow pthread OpenSSL::SSL OpenSSL::Crypto protobuf z)
 elseif (WIN32)
-	set(SRPC_LIB srpc workflow ws2_32 wsock32 OpenSSL::SSL OpenSSL::Crypto z)
+	set(SRPC_LIB srpc)
 else ()
 	set(SRPC_LIB srpc)
 endif ()

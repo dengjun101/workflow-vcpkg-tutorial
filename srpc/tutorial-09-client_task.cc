@@ -15,6 +15,7 @@
 */
 
 #include <stdio.h>
+#include "define.h"
 #include <workflow/WFTaskFactory.h>
 #include <workflow/WFOperator.h>
 #include "echo_pb.srpc.h"

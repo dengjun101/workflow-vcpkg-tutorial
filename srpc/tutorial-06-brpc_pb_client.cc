@@ -15,6 +15,7 @@
 */
 
 #include <stdio.h>
+#include "define.h"
 #include "echo_pb.srpc.h"
 
 using namespace srpc;

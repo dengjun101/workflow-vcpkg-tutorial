@@ -15,6 +15,7 @@
 */
 
 #include <stdio.h>
+#include "define.h"
 #include "echo_thrift.srpc.h"
 
 using namespace srpc;
