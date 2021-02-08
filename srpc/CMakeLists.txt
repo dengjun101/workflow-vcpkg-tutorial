@@ -44,7 +44,6 @@ if (WIN32)
 	link_directories(${SRPC_LIB_DIR} ${WORKFLOW_LIB_DIR} ${Protobuf_LIB_DIR})
 	set(SRPC_GEN_PROGRAM ${SRPC_BIN_DIR}/srpc_generator.exe)
 else ()
-	get_filename_component(Protobuf_LIB_DIR ${Protobuf_LIBRARY} DIRECTORY)
 	link_directories(${SRPC_LIB_DIR} ${WORKFLOW_LIB_DIR} ${Protobuf_LIB_DIR})
 	set(SRPC_GEN_PROGRAM ${SRPC_BIN_DIR}/srpc_generator)
 endif ()
@@ -75,13 +74,7 @@ set(TUTORIAL_PB_LIST
 	tutorial-10-server_async
 )
 
-if (APPLE)
-	set(SRPC_LIB srpc workflow pthread OpenSSL::SSL OpenSSL::Crypto protobuf z)
-elseif (WIN32)
-	set(SRPC_LIB srpc)
-else ()
-	set(SRPC_LIB srpc)
-endif ()
+set(SRPC_LIB srpc)
 
 foreach(src ${TUTORIAL_PB_LIST})
 	string(REPLACE "-" ";" arr ${src})
