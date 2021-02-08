@@ -25,7 +25,7 @@
 #ifndef _WIN32
 #include <arpa/inet.h>
 #else
-#include "PlatformSocket.h"
+#include "workflow/PlatformSocket.h"
 #endif
 namespace protocol
 {
