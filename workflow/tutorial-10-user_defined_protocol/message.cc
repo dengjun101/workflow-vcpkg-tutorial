@@ -20,9 +20,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include "workflow/PlatformSocket.h"
-#include "message.h"
 
+#include "message.h"
+#ifndef _WIN32
+#include <arpa/inet.h>
+#else
+#include "PlatformSocket.h"
+#endif
 namespace protocol
 {
 

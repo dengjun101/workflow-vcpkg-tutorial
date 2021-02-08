@@ -28,6 +28,7 @@
 
 #ifndef _WIN32
 #include <unistd.h>
+#include <arpa/inet.h>
 #endif
 
 void process(WFHttpTask *server_task)
