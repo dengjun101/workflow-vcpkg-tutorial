@@ -35,7 +35,13 @@ set(TUTORIAL_LIST
 	tutorial-12-mysql_cli
 )
 
-set(WORKFLOW_LIB workflow)
+if (APPLE)
+	set(WORKFLOW_LIB workflow pthread OpenSSL::SSL OpenSSL::Crypto)
+elseif (WIN32)
+	set(WORKFLOW_LIB workflow ws2_32 wsock32 OpenSSL::SSL OpenSSL::Crypto)
+else ()
+	set(WORKFLOW_LIB workflow ${LIBRT} pthread OpenSSL::SSL OpenSSL::Crypto)
+endif ()
 
 foreach(src ${TUTORIAL_LIST})
 	string(REPLACE "-" ";" arr ${src})
