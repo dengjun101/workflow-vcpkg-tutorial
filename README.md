@@ -1,15 +1,15 @@
 
-# Tutorial for workflow and srpc using vcpkg
+# Tutorial for workflow using vcpkg
 
 ## On Windows
 
 ```bat
 md D:\tmp
 cd D:\tmp
-git clone https://github.com/dengjunplusplus/vcpkg -b workflow
+git clone https://github.com/microsoft/vcpkg.git
 cd vcpkg
 .\bootstrap-vcpkg.bat
-.\vcpkg.exe install srpc
+.\vcpkg.exe install workflow
 .\vcpkg.exe integrate install
 
 cd D:\tmp
@@ -20,10 +20,6 @@ cmake  -DCMAKE_TOOLCHAIN_FILE=D:/tmp/vcpkg/scripts/buildsystems/vcpkg.cmake -B b
 cmake --build build --config Debug
 cmake --build build --config Release
 
-cd D:\tmp\workflow-vcpkg-tutorial\srpc
-cmake  -DCMAKE_TOOLCHAIN_FILE=D:/tmp/vcpkg/scripts/buildsystems/vcpkg.cmake -B build
-cmake --build build --config Debug
-cmake --build build --config Release
 ```
 
 ## On Linux & Mac
@@ -32,10 +28,10 @@ cmake --build build --config Release
 cd /tmp
 rm -rf vcpkg
 rm -rf workflow-vcpkg-tutorial
-git clone https://github.com/dengjunplusplus/vcpkg -b workflow
+git clone https://github.com/microsoft/vcpkg.git
 cd vcpkg
 ./bootstrap-vcpkg.sh
-./vcpkg install srpc
+./vcpkg install workflow
 ./vcpkg integrate install
 
 cd ..
@@ -45,8 +41,4 @@ cmake -DCMAKE_TOOLCHAIN_FILE=/tmp/vcpkg/scripts/buildsystems/vcpkg.cmake -B buil
 cmake --build build --config Debug
 cmake --build build --config Release
 
-cd ../srpc
-cmake -DCMAKE_TOOLCHAIN_FILE=/tmp/vcpkg/scripts/buildsystems/vcpkg.cmake -B build
-cmake --build build --config Debug
-cmake --build build --config Release
 ```
