@@ -32,7 +32,6 @@ git clone https://github.com/microsoft/vcpkg.git
 cd vcpkg
 ./bootstrap-vcpkg.sh
 ./vcpkg install workflow
-./vcpkg integrate install
 
 cd ..
 git clone https://github.com/dengjunplusplus/workflow-vcpkg-tutorial.git
