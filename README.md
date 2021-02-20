@@ -10,7 +10,6 @@ git clone https://github.com/microsoft/vcpkg.git
 cd vcpkg
 .\bootstrap-vcpkg.bat
 .\vcpkg.exe install workflow
-.\vcpkg.exe integrate install
 
 cd D:\tmp
 git clone https://github.com/dengjunplusplus/workflow-vcpkg-tutorial
@@ -36,6 +35,7 @@ cd vcpkg
 cd ..
 git clone https://github.com/dengjunplusplus/workflow-vcpkg-tutorial.git
 cd workflow-vcpkg-tutorial/workflow
+# -DVCPKG_TARGET_TRIPLET=x64-linux maybe needed
 cmake -DCMAKE_TOOLCHAIN_FILE=/tmp/vcpkg/scripts/buildsystems/vcpkg.cmake -B build
 cmake --build build --config Debug
 cmake --build build --config Release
